@@ -66,8 +66,7 @@ do
             Console.WriteLine("Complete task\n");
             break;
         case "3":
-            //Console.WriteLine("View task\n");
-            
+                        
             var jsonCase = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true // makes property names flexible
