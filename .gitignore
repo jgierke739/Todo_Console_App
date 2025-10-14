@@ -85,6 +85,7 @@ ehthumbs.db
 # JSON data (optional, for your app)
 # Uncomment if you don't want to commit your task data file
  tasks.json
+ *.json
 
 # Git metadata backup files
 *.orig
