@@ -8,6 +8,8 @@ using System.Text.Json;
 List<TodoItem> tasks = new();
 string filePath = "tasks.json";
 
+
+
 //Dictionary<int, string> todos = new Dictionary<int, string>();
 if (File.Exists(filePath))
 {
@@ -64,7 +66,21 @@ do
             Console.WriteLine("Complete task\n");
             break;
         case "3":
-            Console.WriteLine("View task\n");
+            //Console.WriteLine("View task\n");
+            
+            var jsonCase = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true // makes property names flexible
+            };
+
+            int i = 1;
+            Console.Clear();
+            foreach (var todo in tasks)
+            {
+                                
+                Console.WriteLine($"{i}. {todo.Title} - Status: {todo.Status}\n");
+                i++;
+            }
             break;
         case "4":
             Console.WriteLine("Delete task\n");
