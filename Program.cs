@@ -16,11 +16,11 @@ do
 
     Console.ReadKey();
     Console.Clear();
+    Console.WriteLine("***********************************");
     Console.WriteLine("1. Add New Task");
     Console.WriteLine("2. Update Task Status");
     Console.WriteLine("3. View Tasks");
     Console.WriteLine("4. Quit");
-
     Console.WriteLine("***********************************");
     Console.WriteLine("What would you like to do (enter the number):");
     string? choice = Console.ReadLine();
