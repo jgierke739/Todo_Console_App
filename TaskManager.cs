@@ -58,6 +58,8 @@ public class TaskManager
             var todo = _tasks[i];
             Console.WriteLine($"{i + 1}. {todo.Title} - Status: {todo.Status}\n");
         }
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
     }
 
     public void UpdateTaskStatus()

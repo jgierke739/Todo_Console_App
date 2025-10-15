@@ -16,8 +16,7 @@ do
     Console.WriteLine("1. Add New Task");
     Console.WriteLine("2. Mark Task Complete");
     Console.WriteLine("3. View Tasks");
-    Console.WriteLine("4. Delete Task");
-    Console.WriteLine("5. Quit");
+    Console.WriteLine("4. Quit");
 
     Console.WriteLine("***********************************");
     Console.WriteLine("What would you like to do (enter the number):");
@@ -43,9 +42,6 @@ do
             taskManager.ListTasks();
             break;
         case "4":
-            Console.WriteLine("Delete task\n");
-            break;
-        case "5":
             return;
     }
 } while (true);
