@@ -11,9 +11,13 @@ var taskManager = new TaskManager(filePath);
 
 do
 {
+
+    Console.WriteLine("Press any key to continue...");
+
+    Console.ReadKey();
     Console.Clear();
     Console.WriteLine("1. Add New Task");
-    Console.WriteLine("2. Mark Task Complete");
+    Console.WriteLine("2. Update Task Status");
     Console.WriteLine("3. View Tasks");
     Console.WriteLine("4. Quit");
 
