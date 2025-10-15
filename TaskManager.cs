@@ -39,7 +39,7 @@ public class TaskManager
         }
     }
 
-    private void SaveTasks()
+    public void SaveTasks()
     {
         string json = JsonSerializer.Serialize(_tasks, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(_filePath, json);
@@ -60,9 +60,10 @@ public class TaskManager
         }
     }
 
-    private void UpdateTaskStatus()
+    public void UpdateTaskStatus()
     {
         ListTasks();
+        Console.WriteLine("Choose a task:");
         if (int.TryParse(Console.ReadLine(), out int choice) && choice > 0 && choice <= _tasks.Count)
         {
             var selectedTask = _tasks[choice - 1];
@@ -75,6 +76,8 @@ public class TaskManager
                 selectedTask.UpdatedAt = DateTime.UtcNow;
                 SaveTasks();
                 Console.WriteLine("Task updated successfully!");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
         }
         else
@@ -83,7 +86,7 @@ public class TaskManager
         }
     }
     
-    private void AddTask(string title, string notes)
+    public void AddTask(string title, string notes)
     {
         var newTask = new TodoItem
         {

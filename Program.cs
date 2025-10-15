@@ -11,6 +11,7 @@ var taskManager = new TaskManager(filePath);
 
 do
 {
+    Console.Clear();
     //Console.WriteLine("What would you like to do (enter the number):");
     Console.WriteLine("1. Add New Task");
     Console.WriteLine("2. Mark Task Complete");
@@ -25,30 +26,17 @@ do
     switch (choice)
     {
         case "1":
-            Console.WriteLine("Enter the new task");
-            string? title = Console.ReadLine();
-            Console.WriteLine("Task Notes (optional):");
-            string? notes = Console.ReadLine();
-
-            var newTask = new TodoItem
-            {
-                Id = Guid.NewGuid(),
-                Title = title,
-                Notes = notes,
-                Status = "active",
-                CreatedAt = DateTimeOffset.UtcNow
-            };
-            tasks.Add(newTask);
-
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            string updatedJson = JsonSerializer.Serialize(tasks, options);
-            File.WriteAllText(filePath, updatedJson);
             Console.Clear();
-            Console.WriteLine($"\n✅ Added task: {newTask.Title}\n");
+            Console.WriteLine("Enter the new task");
+            string? title = Console.ReadLine() ?? "";
+            Console.WriteLine("Task Notes (optional):");
+            string? notes = Console.ReadLine() ?? "";
+
+            taskManager.AddTask(title, notes);
             break;
         case "2":
-            
-            Console.WriteLine("Complete task\n");
+            Console.Clear();
+            taskManager.UpdateTaskStatus();
             break;
         case "3":
             Console.Clear();
@@ -58,7 +46,6 @@ do
             Console.WriteLine("Delete task\n");
             break;
         case "5":
-
             return;
     }
 } while (true);
