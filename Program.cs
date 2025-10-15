@@ -66,19 +66,18 @@ do
             Console.WriteLine("Complete task\n");
             break;
         case "3":
-                        
+
             var jsonCase = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true // makes property names flexible
             };
-
-            int i = 1;
+            
             Console.Clear();
-            foreach (var todo in tasks)
+
+            for (int i = 0; i < tasks.Count; i++)
             {
-                                
-                Console.WriteLine($"{i}. {todo.Title} - Status: {todo.Status}\n");
-                i++;
+                var todo = tasks[i];
+                Console.WriteLine($"{i + 1}. {todo.Title} - Status: {todo.Status}\n");
             }
             break;
         case "4":
