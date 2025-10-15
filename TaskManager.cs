@@ -44,14 +44,14 @@ public class TaskManager
 
     }
 
-    private void ListTasks()
+    public void ListTasks()
     {
         if (_tasks.Count == 0)
         {
             Console.WriteLine("No tasks found.");
             return;
         }
-        
+
         for (int i = 0; i < _tasks.Count; i++)
         {
             var todo = _tasks[i];

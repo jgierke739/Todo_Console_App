@@ -7,23 +7,7 @@ using System.Text.Json;
 
 List<TodoItem> tasks = new();
 string filePath = "tasks.json";
-
-
-
-//Dictionary<int, string> todos = new Dictionary<int, string>();
-if (File.Exists(filePath))
-{
-    string json = File.ReadAllText(filePath);
-    if (!string.IsNullOrWhiteSpace(json))
-    {
-        tasks = JsonSerializer.Deserialize<List<TodoItem>>(json) ?? new();
-    }
-}
-else
-{
-    // ✅ Ensure the file exists and starts as an empty JSON array
-    File.WriteAllText(filePath, "[]");
-}
+var taskManager = new TaskManager(filePath);
 
 do
 {
@@ -67,19 +51,8 @@ do
             Console.WriteLine("Complete task\n");
             break;
         case "3":
-
-            var jsonCase = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true // makes property names flexible
-            };
-            
             Console.Clear();
-
-            for (int i = 0; i < tasks.Count; i++)
-            {
-                var todo = tasks[i];
-                Console.WriteLine($"{i + 1}. {todo.Title} - Status: {todo.Status}\n");
-            }
+            taskManager.ListTasks();
             break;
         case "4":
             Console.WriteLine("Delete task\n");
