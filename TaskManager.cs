@@ -85,7 +85,18 @@ public class TaskManager
     
     private void AddTask(string title, string notes)
     {
-        
+        var newTask = new TodoItem
+        {
+            Id = Guid.NewGuid(),
+            Title = title,
+            Notes = notes,
+            Status = "active",
+            CreatedAt = DateTimeOffset.UtcNow
+        };
+        _tasks.Add(newTask);
+
+        SaveTasks();
+        Console.WriteLine("Task added successfully!");
     }
 
 }
