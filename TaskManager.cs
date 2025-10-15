@@ -37,6 +37,36 @@ public class TaskManager
             File.WriteAllText(_filePath, "[]");
             _tasks = new();
         }
-}
+    }
+
+    private void SaveTasks()
+    {
+
+    }
+
+    private void ListTasks()
+    {
+        if (_tasks.Count == 0)
+        {
+            Console.WriteLine("No tasks found.");
+            return;
+        }
+        
+        for (int i = 0; i < _tasks.Count; i++)
+        {
+            var todo = _tasks[i];
+            Console.WriteLine($"{i + 1}. {todo.Title} - Status: {todo.Status}\n");
+        }
+    }
+
+    private void UpdateTaskStatus()
+    {
+
+    }
+    
+    private void AddTask(string title, string notes)
+    {
+        
+    }
 
 }
