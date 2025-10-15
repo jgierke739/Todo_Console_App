@@ -12,7 +12,6 @@ var taskManager = new TaskManager(filePath);
 do
 {
     Console.Clear();
-    //Console.WriteLine("What would you like to do (enter the number):");
     Console.WriteLine("1. Add New Task");
     Console.WriteLine("2. Mark Task Complete");
     Console.WriteLine("3. View Tasks");
@@ -30,7 +29,6 @@ do
             string? title = Console.ReadLine() ?? "";
             Console.WriteLine("Task Notes (optional):");
             string? notes = Console.ReadLine() ?? "";
-
             taskManager.AddTask(title, notes);
             break;
         case "2":

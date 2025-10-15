@@ -5,8 +5,8 @@ using System.Text.Json;
 
 public class TaskManager
 {
-    private readonly string? _filePath;
-    private List<TodoItem>? _tasks;
+    private readonly string _filePath;
+    private List<TodoItem> _tasks;
 
     public TaskManager(string filePath)
     {
@@ -74,9 +74,25 @@ public class TaskManager
 
             if (!string.IsNullOrWhiteSpace(newStatus))
             {
+                
                 selectedTask.Status = newStatus;
                 selectedTask.UpdatedAt = DateTime.UtcNow;
-                SaveTasks();
+                switch (newStatus)
+                {
+                    case "Completed":
+                        selectedTask.CompletedAt = DateTime.UtcNow;
+                        SaveTasks();
+                        break;
+                    case "Deleted":
+                        selectedTask.DeletedAt = DateTime.UtcNow;
+                        SaveTasks();
+                        break;
+                    default:
+                        SaveTasks();
+                        break;
+                }
+                
+                
                 Console.WriteLine("Task updated successfully!");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
