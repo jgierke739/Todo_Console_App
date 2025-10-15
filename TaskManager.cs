@@ -41,7 +41,8 @@ public class TaskManager
 
     private void SaveTasks()
     {
-
+        string json = JsonSerializer.Serialize(_tasks, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(_filePath, json);
     }
 
     public void ListTasks()
@@ -61,7 +62,25 @@ public class TaskManager
 
     private void UpdateTaskStatus()
     {
+        ListTasks();
+        if (int.TryParse(Console.ReadLine(), out int choice) && choice > 0 && choice <= _tasks.Count)
+        {
+            var selectedTask = _tasks[choice - 1];
+            Console.WriteLine("Enter the new status (Active, Completed, Deleted): ");
+            string? newStatus = Console.ReadLine();
 
+            if (!string.IsNullOrWhiteSpace(newStatus))
+            {
+                selectedTask.Status = newStatus;
+                selectedTask.UpdatedAt = DateTime.UtcNow;
+                SaveTasks();
+                Console.WriteLine("Task updated successfully!");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid choice.");
+        }
     }
     
     private void AddTask(string title, string notes)
